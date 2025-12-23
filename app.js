@@ -387,22 +387,27 @@ document.addEventListener("DOMContentLoaded", () => {
   container.innerHTML = '<p class="loading">Loading cricket news...</p>';
 
   const API_KEY = "b477ab6d846e35b64be33cde384f0d53";
-  const API_URL = `https://gnews.io/api/v4/search?q=cricket&lang=en&max=12&token=${API_KEY}`;
-  //  console.log(API_URL);
+  const GNEWS_URL = `https://gnews.io/api/v4/search?q=cricket&lang=en&max=12&token=${API_KEY}`;
+  
+
+  const API_URL = `https://api.allorigins.win/get?url=${encodeURIComponent(GNEWS_URL)}`;
+
   fetch(API_URL)
     .then((res) => {
       if (!res.ok) throw new Error(`API error: ${res.status}`);
       return res.json();
     })
     .then((data) => {
-      if (!data.articles || data.articles.length === 0) {
+      const articles = JSON.parse(data.contents); 
+      
+      if (!articles.articles || articles.articles.length === 0) {
         container.innerHTML = '<p class="no-news">No cricket news found.</p>';
         return;
       }
 
       container.innerHTML = "";
 
-      data.articles.forEach((news) => {
+      articles.articles.forEach((news) => {
         const card = document.createElement("div");
         card.className = "news-container";
 
