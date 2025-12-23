@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const API_KEY = "b477ab6d846e35b64be33cde384f0d53";
   const API_URL = `https://gnews.io/api/v4/search?q=cricket&lang=en&max=12&token=${API_KEY}`;
-
+  //  console.log(API_URL);
   fetch(API_URL)
     .then((res) => {
       if (!res.ok) throw new Error(`API error: ${res.status}`);
