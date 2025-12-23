@@ -137,12 +137,14 @@ async function getQuote() {
     );
 
     let quotee = await response.json();
-   console.log(quotee);
+    console.log(quotee);
 
-    document.querySelector(".quote-card .quote").textContent = `${quotee.quote}`;
+    document.querySelector(
+      ".quote-card .quote"
+    ).textContent = `${quotee.quote}`;
     document.querySelector(".author").textContent = `— ${quotee.author}`;
   } catch (error) {
-    console.error("Error:", error);  
+    console.error("Error:", error);
     document.querySelector(".quote").textContent =
       "Keep going. Even loading takes patience 💫";
     document.querySelector(".author").textContent = "";
@@ -151,19 +153,18 @@ async function getQuote() {
 
 getQuote();
 
-
 let workDuration = 25 * 60;
 let breakDuration = 5 * 60;
 let seconds = workDuration;
-let timerMode = "work"; 
+let timerMode = "work";
 
 let timer = document.querySelector(".timer h1");
 let start = document.querySelector(".start");
 let pause = document.querySelector(".pause");
 let reset = document.querySelector(".reset");
-let change=document.querySelector("#change");
+let change = document.querySelector("#change");
 
-let timerId; 
+let timerId;
 
 function update() {
   let min = Math.floor(seconds / 60);
@@ -187,13 +188,11 @@ function startTimer() {
       if (timerMode === "work") {
         timerMode = "break";
         seconds = breakDuration;
-        change.textContent="Break session";
-       
+        change.textContent = "Break session";
       } else {
         timerMode = "work";
         seconds = workDuration;
-        change.textContent="Work session";
-      
+        change.textContent = "Work session";
       }
 
       update();
@@ -210,7 +209,7 @@ pause.addEventListener("click", () => {
   start.disabled = false;
   pause.disabled = true;
   reset.disabled = false;
-  clearInterval(timerId); 
+  clearInterval(timerId);
 });
 
 reset.addEventListener("click", () => {
@@ -226,8 +225,6 @@ reset.addEventListener("click", () => {
 });
 
 update();
-
-
 
 const cells = document.querySelectorAll(".cell");
 const statusText = document.querySelector(".status");
@@ -250,7 +247,6 @@ const winningCombos = [
 
 function handleCellClick(e) {
   const index = e.target.dataset.index;
-  
 
   if (board[index] !== "" || !gameActive) return;
 
@@ -266,11 +262,7 @@ function checkResult() {
 
   for (let combo of winningCombos) {
     const [a, b, c] = combo;
-    if (
-      board[a] &&
-      board[a] === board[b] &&
-      board[a] === board[c]
-    ) {
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
       roundWon = true;
       break;
     }
@@ -297,7 +289,7 @@ function resetGame() {
   gameActive = true;
   board = ["", "", "", "", "", "", "", "", ""];
 
-  cells.forEach(cell => {
+  cells.forEach((cell) => {
     cell.textContent = "";
     cell.classList.remove("x", "o");
   });
@@ -305,9 +297,8 @@ function resetGame() {
   statusText.textContent = "Player X's Turn";
 }
 
-cells.forEach(cell => cell.addEventListener("click", handleCellClick));
+cells.forEach((cell) => cell.addEventListener("click", handleCellClick));
 resetBtn.addEventListener("click", resetGame);
-
 
 const clockContainer = document.querySelector(".clock-container");
 
@@ -322,11 +313,11 @@ function updateClock() {
 
   clockContainer.innerHTML = `
     <div class="clock">
-      <span>${String(h).padStart(2,"0")}</span>
+      <span>${String(h).padStart(2, "0")}</span>
       <span class="colon">:</span>
-      <span>${String(m).padStart(2,"0")}</span>
+      <span>${String(m).padStart(2, "0")}</span>
       <span class="colon">:</span>
-      <span>${String(s).padStart(2,"0")}</span>
+      <span>${String(s).padStart(2, "0")}</span>
       <span class="ampm">${ampm}</span>
     </div>
     <p class="date">${d.toDateString()}</p>
@@ -346,13 +337,13 @@ async function getQuote() {
 
     let quotee = await response.json();
 
-
     document.querySelector(".focus-box .quote").textContent = quotee.quote;
-     document.querySelector(".quote-card .quote").textContent = `${quotee.quote}`;
+    document.querySelector(
+      ".quote-card .quote"
+    ).textContent = `${quotee.quote}`;
 
     const author = document.querySelector(".author");
     if (author) author.textContent = `— ${quotee.author}`;
-
   } catch (error) {
     document.querySelector(".focus-box .quote").textContent =
       "Keep going. Even loading takes patience 💫";
@@ -361,14 +352,11 @@ async function getQuote() {
 
 let hour = new Date().getHours();
 greet.textContent =
-  hour < 12 ? "Good Morning ☀️" :
-  hour < 18 ? "Good Afternoon 🌤" :
-  "Good Evening 🌙";
-
-
-
-
-
+  hour < 12
+    ? "Good Morning ☀️"
+    : hour < 18
+    ? "Good Afternoon 🌤"
+    : "Good Evening 🌙";
 
 const apiKey = "3699851753b7c75d9c566319d117dbd3";
 const cityEl = document.querySelector(".city");
@@ -387,10 +375,9 @@ async function getWeather(lat, lon) {
   descEl.textContent = data.weather[0].description;
 }
 
-navigator.geolocation.getCurrentPosition(pos => {
+navigator.geolocation.getCurrentPosition((pos) => {
   getWeather(pos.coords.latitude, pos.coords.longitude);
 });
-
 
 
 
@@ -399,16 +386,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   container.innerHTML = '<p class="loading">Loading cricket news...</p>';
 
-  const API_KEY = "de26f3fe9cc94507bb6c0c6c99ad459e";
-  const API_URL = `https://newsapi.org/v2/everything?q=cricket&sortBy=popularity&language=en&apiKey=${API_KEY}`;
+  const API_KEY = "b477ab6d846e35b64be33cde384f0d53";
+  const API_URL = `https://gnews.io/api/v4/search?q=cricket&lang=en&max=12&token=${API_KEY}`;
 
   fetch(API_URL)
-    .then(res => {
+    .then((res) => {
       if (!res.ok) throw new Error(`API error: ${res.status}`);
       return res.json();
     })
-    .then(data => {
-    
+    .then((data) => {
       if (!data.articles || data.articles.length === 0) {
         container.innerHTML = '<p class="no-news">No cricket news found.</p>';
         return;
@@ -416,12 +402,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       container.innerHTML = "";
 
-      data.articles.forEach(news => {
+      data.articles.forEach((news) => {
         const card = document.createElement("div");
         card.className = "news-container";
 
         card.innerHTML = `
-          <img src="${news.urlToImage || 'https://via.placeholder.com/300x200'}" alt="${news.title}">
+          <img src="${news.image || "https://via.placeholder.com/300x200"}" alt="${news.title}">
           <div class="news-content">
             <h3>${news.title}</h3>
           </div>
@@ -434,8 +420,9 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(card);
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Cricket news error:", err);
-      container.innerHTML = `<p class="error">Failed to load cricket news. Please try again later.</p>`;
+      container.innerHTML =
+        '<p class="error">Failed to load cricket news. Please try again later.</p>';
     });
 });
