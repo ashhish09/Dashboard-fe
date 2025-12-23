@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deshboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="main">
+
+
+      <div class="gallery">
+
+        <div class="content">
+
+          <div class="div1">
+            <div class="clock-container"></div>
+            <div class="focus-box">
+              <h2 class="greet">Hello 👋</h2>
+              <p class="quote">Stay consistent, success will follow.</p>
+        
+            </div>
+          </div>
+
+          <div class="div22">
+            <div class="spotify">
+              <iframe
+                data-testid="embed-iframe"
+                style="border-radius: 12px"
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbVhgADFy3im?utm_source=generator&theme=0"
+                width="300"
+                height="330"
+                frameborder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              ></iframe>
+            </div>
+
+            <div class="news">
+              <div class="container-news-cricket"></div>
+            </div>
+
+          </div>
+
+          <div class="weather-app">
+            <div class="weather-info">
+              <h3 class="city">Detecting location...</h3>
+              <p class="temp">-- °C</p>
+              <p class="desc">--</p>
+            </div>
+
+            <div class="btn">
+              <a href="https://youtube.com" target="_blank">YouTube</a>
+              <a href="https://spotify.com" target="_blank">Spotify</a>
+              <a href="https://google.com" target="_blank">Google</a>
+              <a href="https://github.com" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="div todo" id="0"></div>
+        <div class="div dailyplan" id="1"></div>
+        <div class="div motivation" id="2"></div>
+        <div class="pomodorotimer div" id="3"></div>
+        <div class="div dailygoals" id="4"></div>
+      </div>
+    </div>
+
+    <div class="featuremain todom">
+      <button class="back" id="0">close</button>
+
+      <div class="container">
+        <div class="list">
+          <h1>To Do List</h1>
+
+          <div class="btn">
+            <input type="text" placeholder="Add new task..." />
+            <button>Add</button>
+          </div>
+          <ul class="teenu"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="featuremain dailyplan">
+      <button class="back" id="1">close</button>
+      <h1>Daily Planner 🌙</h1>
+
+      <div class="dailypage" id="planner"></div>
+    </div>
+
+    <div class="featuremain motivation">
+      <button class="back" id="2">close</button>
+
+      <div class="quote-card">
+        <h2 class="quote">“Small steps every day lead to big results.”</h2>
+        <span class="author">— James Clear</span>
+      </div>
+    </div>
+
+    <div class="featuremain pomodorotimer">
+      <button class="back" id="3">close</button>
+      <h3 id="change">Work session</h3>
+      <div class="timer">
+        <h1>12:00</h1>
+        <button class="start">Start</button>
+        <button class="pause">Pause</button>
+        <button class="reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="featuremain dailygoals">
+      <button class="back" id="4">close</button>
+      <div class="game">
+        <h1>Tic Tac Toe</h1>
+        <div class="board">
+          <div class="cell" data-index="0"></div>
+          <div class="cell" data-index="1"></div>
+          <div class="cell" data-index="2"></div>
+          <div class="cell" data-index="3"></div>
+          <div class="cell" data-index="4"></div>
+          <div class="cell" data-index="5"></div>
+          <div class="cell" data-index="6"></div>
+          <div class="cell" data-index="7"></div>
+          <div class="cell" data-index="8"></div>
+        </div>
+
+        <h2 class="status">Player X's Turn</h2>
+        <button class="reset">Restart Game</button>
+      </div>
+    </div>
+      
+  </body>
+</html>
